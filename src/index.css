@@ -3,7 +3,7 @@
 @tailwind utilities;
 /* Minimalista */
 .my-scroll::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 .my-scroll::-webkit-scrollbar-track {
@@ -20,7 +20,7 @@
 }
 /* Scrollbar general */
 ::-webkit-scrollbar {
-  width: 6px;           /* Grosor del scrollbar */
+  width: 5px;           /* Grosor del scrollbar */
 }
 
 /* Fondo del scrollbar */
@@ -31,13 +31,14 @@
 
 /* Barra que se mueve */
 ::-webkit-scrollbar-thumb {
-  background: #152c48;  /* tu verde */
+  background: #142c4c;  /* tu verde */
   border-radius: 100px;
 }
 
 /* Hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #152c48;  /* verde un poco más oscuro */
+  background: #142c4c;  /* verde un poco más oscuro */
+  
 } 
 
 body {

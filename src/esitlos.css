@@ -1,0 +1,256 @@
+/* =====================
+   MATERIAL UI FONT (ROBOTO)
+===================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+
+/* =====================
+   VARIABLES GLOBALES · SUMIMAS
+===================== */
+:root {
+  /* === COLORES === */
+  --sumimas-color-azul-oscuro: #142c4c;
+  --sumimas-color-azul-oscuro-hover: #1b3b66;
+
+  --sumimas-color-naranja: #f49444;
+  --sumimas-color-naranja-hover: #e27f2e;
+
+  --sumimas-color-verde: #8cbc24;
+  --sumimas-color-verde-hover: #80a829;
+
+  --sumimas-color-rojo: #dc2626;
+  --sumimas-color-rojo-hover: #b91c1c;
+
+  --sumimas-color-azul-suave: #5cc3eb;
+
+  /* === SUPERFICIES === */
+  --sumimas-color-fondo: #ffffff;
+  --sumimas-color-superficie: #ffffff;
+  --sumimas-color-borde: #e5e7eb;
+
+  /* === TEXTO === */
+  --sumimas-texto-primario: #142c4c;
+  --sumimas-texto-secundario: #616170;
+  --sumimas-texto-invertido: #ffffff;
+
+  /* === SOMBRAS === */
+  --sumimas-sombra-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --sumimas-sombra-md: 0 14px 30px rgba(0,0,0,0.08);
+
+  /* === TIPOGRAFÍA (MATERIAL UI) === */
+  --sumimas-fuente-base: 'Montserrat';
+
+  --sumimas-fs-xxs: 10px;
+  --sumimas-fs-xs: 12px;
+  --sumimas-fs-sm: 14px;
+  --sumimas-fs-base: 16px;
+  --sumimas-fs-md: 20px;
+  --sumimas-fs-lg: 25px;
+
+  --sumimas-lh-estrecho: 1.3;
+  --sumimas-lh-normal: 1.45;
+
+  /* === BORDES === */
+  --sumimas-radio-sm: 8px;
+  --sumimas-radio-md: 10px;
+  --sumimas-radio-lg: 14px;
+}
+
+/* =====================
+   BASE
+===================== */
+* {
+  font-family: var(--sumimas-fuente-base) !important;
+}
+
+html,body {
+  font-size: var(--sumimas-fs-base);
+  font-family: var(--sumimas-fuente-base);
+}
+
+body {
+  font-family: var(--sumimas-fuente-base);
+}
+
+/* =====================
+   TIPOGRAFÍA
+===================== */
+h1 {
+  font-size: var(--sumimas-fs-lg);
+  font-weight: 600; /* MUI usa 500 */
+}
+
+h2 {
+  font-size: var(--sumimas-fs-md);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: var(--sumimas-fs-base);
+  font-weight: 400;
+}
+
+p { 
+  font-size: var(--sumimas-fs-sm);
+  color: var(--sumimas-texto-primario);
+  line-height: var(--sumimas-lh-normal);
+}
+
+.subtitle {
+  font-size: var(--sumimas-fs-sm);
+  color: var(--sumimas-texto-secundario);
+}
+
+.bg-sumimas-primary {
+  background-color: var(--sumimas-color-azul-oscuro);
+  color: var(--sumimas-texto-invertido);
+}
+
+/* ===================== TIPOGRAFÍA / CLASES ===================== */
+.text-xxs-sumimas { font-size: var(--sumimas-fs-xxs); }
+.text-xs-sumimas  { font-size: var(--sumimas-fs-xs); }
+.text-sm-sumimas  { font-size: var(--sumimas-fs-sm); }
+.text-base-sumimas{ font-size: var(--sumimas-fs-base); }
+.text-md-sumimas  { font-size: var(--sumimas-fs-md); }
+.text-lg-sumimas  { font-size: var(--sumimas-fs-lg); }
+
+.texto-primario-sumimas   { color: var(--sumimas-texto-primario); }
+.texto-secundario-sumimas { color: var(--sumimas-texto-secundario); }
+.texto-invertido-sumimas  { color: var(--sumimas-texto-invertido); }
+
+/* =====================
+   BOTONES (MUI FEEL)
+===================== */
+button{
+  padding: 0.45rem 1.1rem;
+  font-size: var(--sumimas-fs-base);
+  font-weight: 400; /* MUI buttons */
+  font-family: var(--sumimas-fuente-base);
+  border-radius: var(--sumimas-radio-md);
+  border: none;
+  cursor: pointer;
+  line-height: 1.75;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-uno {
+  background-color: var(--sumimas-color-azul-oscuro);
+  color: #fff;
+  
+}
+.btn-uno:hover {
+  background-color: var(--sumimas-color-azul-oscuro-hover);
+}
+
+.btn-dos {
+  background-color: var(--sumimas-color-naranja);
+  color: #fff;
+}
+.btn-dos:hover {
+  background-color: var(--sumimas-color-naranja-hover);
+}
+
+.btn-cancelar {
+  background-color: var(--sumimas-color-rojo);
+  color: #fff;
+}
+.btn-cancelar:hover {
+  background-color: var(--sumimas-color-rojo-hover);
+}
+.btn-confirmar {
+  background-color: var(--sumimas-color-verde);
+  color: #fff;
+}
+.btn-confirmar:hover {
+  background-color: var(--sumimas-color-verde-hover);
+}
+/* =====================
+   ALERTAS
+===================== */
+/* =====================
+   ALERTAS · SUMIMAS
+===================== */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+
+  padding: 0.75rem 1rem;
+  border-radius: var(--sumimas-radio-md);
+
+  font-size: var(--sumimas-fs-sm);
+  font-family: var(--sumimas-fuente-base);
+  line-height: var(--sumimas-lh-normal);
+
+  border-left: 4px solid;
+  background-color: #f9fafb;
+  color: var(--sumimas-texto-primario);
+
+  box-shadow: var(--sumimas-sombra-sm);
+
+  animation: alertFadeIn 0.2s ease-out;
+}s/* =====================
+   TIPOS DE ALERTA
+===================== */
+
+/* INFO */
+.alert-info {
+  border-color: var(--sumimas-color-azul-suave);
+  background-color: rgba(92, 195, 235, 0.10);
+}
+
+
+/* WARNING */
+.alert-warning {
+  border-color: var(--sumimas-color-naranja);
+  background-color: rgba(244, 148, 68, 0.12);
+}
+
+
+/* SUCCESS */
+.alert-success {
+  border-color: var(--sumimas-color-verde);
+  background-color: rgba(140, 188, 36, 0.14);
+}
+
+
+/* DANGER */
+.alert-danger {
+  border-color: var(--sumimas-color-rojo);
+  background-color: rgba(220, 38, 38, 0.14);
+}
+
+
+
+/* =====================
+   FORMULARIOS
+===================== */
+label {
+  font-size: var(--sumimas-fs-xs);
+  font-weight: 500;
+  color: var(--sumimas-texto-secundario);
+}
+
+.input {
+  padding: 0.55rem 0.7rem;
+  border-radius: var(--sumimas-radio-md);
+  border: 1px solid var(--sumimas-color-borde);
+  font-size: var(--sumimas-fs-sm);
+  font-family: var(--sumimas-fuente-base);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--sumimas-color-azul-oscuro);
+  box-shadow: 0 0 0 2px rgba(20,44,76,0.15);
+}
+
+/* =====================
+   FOOTER
+===================== */
+.footer {
+  border-top: 1px solid var(--sumimas-color-borde);
+  padding: 1.25rem;
+  text-align: center;
+  font-size: var(--sumimas-fs-xs);
+  color: var(--sumimas-texto-secundario);
+}

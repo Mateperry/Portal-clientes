@@ -6,6 +6,7 @@ interface Props {
   to: string;
   icon: ReactNode;
   showLabel: boolean;
+  onClick?: () => void;
 }
 
 export default function SidebarItem({
@@ -13,55 +14,42 @@ export default function SidebarItem({
   to,
   icon,
   showLabel,
+  onClick,
 }: Props) {
   return (
-    <NavLink
-      to={to}
-      end
-      className={({ isActive }) =>
-        `
-        group relative flex items-center gap-3
-        px-3 py-2 rounded-md
-        text-sm font-medium
-        font-[Inter]
-        transition-all duration-200
-
-        ${
-          isActive
-            ? "bg-[rgba(20,44,76,0.12)] text-[#142c4c]"
+    <div className="relative group">
+      <NavLink
+        to={to}
+        end
+        onClick={onClick}
+        className={({ isActive }) =>
+          `
+          flex items-center gap-3 px-2 py-2 rounded-md
+          text-base-sumimas transition-all duration-200
+          ${isActive
+            ? "bg-[#142c4c] text-[#ffff]"
             : "text-gray-600 hover:bg-[rgba(20,44,76,0.08)] hover:text-[#1b3b66]"
-        }
+          }
         `
-      }
-    >
-      {/* Indicador lateral (activo) */}
-      <span
-        className={`
-          absolute left-0 top-1/2 -translate-y-1/2
-          h-6 w-1 rounded-r
-          bg-[#142c4c]
-          transition-opacity
-          opacity-0 group-[.active]:opacity-100
-        `}
-      />
-
-      {/* Icono */}
-      <span
-        className={`
-          text-[22px]
-          transition-colors
-          group-hover:text-[#1b3b66]
-        `}
+        }
       >
-        {icon}
-      </span>
+        {/* Icono */}
+        <span className="text-[22px]">{icon}</span>
 
-      {/* Texto */}
-      {showLabel && (
-        <span className=" text-lg ">
+        {/* Texto normal */}
+        {showLabel && <span>{label}</span>}
+      </NavLink>
+
+      {/* Tooltip al hacer hover cuando sidebar cerrado */}
+      {!showLabel && (
+        <span className="absolute left-full top-1/2 -translate-y-1/2 ml-2
+                         bg-gray-900 text-white text-sm px-2 py-1 rounded
+                         opacity-0 group-hover:opacity-100
+                         transition-opacity duration-200
+                         whitespace-nowrap pointer-events-none z-50">
           {label}
         </span>
       )}
-    </NavLink>
+    </div>
   );
 }

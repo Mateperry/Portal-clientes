@@ -65,7 +65,7 @@ export default function BoxList({
   // Desaparecer toast después de 1.5s (más rápido)
   useEffect(() => {
     if (toastMessage) {
-      const timer = setTimeout(() => setToastMessage(""), 1500);
+      const timer = setTimeout(() => setToastMessage(""), 2000);
       return () => clearTimeout(timer);
     }
   }, [toastMessage]);
@@ -74,9 +74,17 @@ export default function BoxList({
     <div className="rounded-sm bg-gray-50 overflow-visible relative">
       {/* TOAST */}
       {toastMessage && (
-        <div className="fixed top-5 right-5 bg-[#dc2626] text-white px-4 py-2 shadow-lg z-50 animate-slideIn rounded-full text-sm font-medium max-w-xs text-center">
-          {toastMessage}
-        </div>
+<div
+  className="
+    alert alert-danger
+    fixed top-2 right-16
+    z-50
+  "
+>
+  {toastMessage}
+</div>
+
+
       )}
 
       {/* HEADER */}
