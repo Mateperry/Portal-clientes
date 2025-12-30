@@ -71,7 +71,7 @@ export default function BoxList({
   }, [toastMessage]);
 
   return (
-    <div className="rounded-sm bg-gray-50 overflow-visible relative">
+    <div className="rounded-sm bg-gray-50 overflow-visible relative h-screen">
       {/* TOAST */}
       {toastMessage && (
 <div
