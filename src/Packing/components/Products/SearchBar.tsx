@@ -1,42 +1,29 @@
-// Importamos el icono de búsqueda de Material UI
 import SearchIcon from "@mui/icons-material/Search";
 
-// Props del componente
 interface SearchBarProps {
-  value: string; // Valor actual del input
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Función al cambiar texto
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-// Componente principal
 export default function SearchBar({ value, onChange }: SearchBarProps) {
   return (
     <div
-      className="
-        flex items-center gap-2
-        bg-white
-        border border-[#152c48]
-        rounded-full
-        shadow-sm
-
-        px-2 py-1
-        sm:px-3 sm:py-2
-        md:px-4 md:py-2
-
-        transition
-        focus-within:ring-2
-        focus-within:ring-[#152c48]
-        focus-within:ring-opacity-40
-      "
+      className="flex items-center gap-2 transition-all duration-200"
+      style={{
+        backgroundColor: "var(--sumimas-color-superficie)",
+        border: "1px solid var(--sumimas-color-azul-oscuro)", // Usando tu azul oscuro
+        borderRadius: "var(--sumimas-radio-lg)", // Radio grande para efecto redondeado/pill
+        boxShadow: "var(--sumimas-sombra-sm)",
+        padding: "0.45rem 0.8rem",
+      }}
     >
       {/* Icono de lupa */}
       <SearchIcon
-        className="
-          text-gray-500
-          text-sm
-          sm:text-base
-          md:text-lg
-          pointer-events-none
-        "
+        sx={{
+          color: "var(--sumimas-texto-secundario)",
+          fontSize: { xs: 18, sm: 20, md: 22 },
+          pointerEvents: "none",
+        }}
       />
 
       {/* Input de búsqueda */}
@@ -48,18 +35,24 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
         className="
           w-full
           bg-transparent
-          text-sm
-          sm:text-sm
-
           outline-none
           focus:outline-none
-
-          placeholder-gray-400
-          caret-[#152c48]
-
           [-webkit-tap-highlight-color:transparent]
+          text-sm-sumimas
+          texto-primario-sumimas
         "
+        style={{
+          fontFamily: "var(--sumimas-fuente-base)",
+          caretColor: "var(--sumimas-color-azul-oscuro)",
+        }}
       />
+
+      {/* Estilo dinámico para el focus-within (anillo de enfoque) */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .search-focus-effect:focus-within {
+          box-shadow: 0 0 0 2px rgba(20, 44, 76, 0.2);
+        }
+      `}} />
     </div>
   );
 }

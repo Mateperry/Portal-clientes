@@ -1,3 +1,4 @@
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';   
 // Importamos hook de estado de React
 import { useState } from "react";
 
@@ -15,9 +16,6 @@ import { useSearchProducts } from "../../Hooks/Products/useSearchProducts";
 import { usePagination } from "../../Hooks/Pagination/usePagination";
 import { useResponsiveItems } from "../../Hooks/UI/useResponsiveItems";
 import { useToggleVisibility } from "../../Hooks/UI/useToggleVisibility";
-
-// Botón para mostrar/ocultar información
-import EyeToggleButton from "../common/EyeToggleButton";
 
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 
@@ -81,18 +79,30 @@ function ProductList({
   }
 
   return (
-    <div className="w-full sm:w-2/12 md:w-3/12 lg:w-1/5 xl:w-1/5 bg-gray-50 rounded-xl p-4 flex flex-col gap-3 shadow-inner max-h-full">
+    <div className="w-full sm:w-2/12 md:w-3/12 lg:w-1/5 xl:w-1/5 bg-gray-50 rounded-xl p-3 flex flex-col gap-3 shadow-inner max-h-full">
 
       {/* Barra de búsqueda */}
       <SearchBar value={search} onChange={handleSearch} />
 
       {/* Contador de SKU */}
-      <div className="bg-gray-200 rounded-xl py-2 flex flex-col items-center justify-center text-gray-700 shadow-sm relative">
+      {/* Eliminado bg-gray-200 para que el ojo se vea sobre fondo limpio */}
+      <div className="rounded-xl py-2 flex flex-col items-center justify-center texto-primario-sumimas border border-gray-200 shadow-sm relative">
         <div className="absolute top-1 right-1">
-          <EyeToggleButton active={showDescription} onToggle={toggle} size={14} />
+          {/* Reemplazado EyeToggleButton por el Icono pedido, sin fondo */}
+          <button 
+            onClick={toggle} 
+            className="bg-transparent border-none p-0 flex items-center justify-center cursor-pointer outline-none"
+          >
+            <RemoveRedEyeOutlinedIcon 
+              style={{ 
+                fontSize: 18, 
+                color: showDescription ? "var(--sumimas-color-azul-oscuro)" : "#9ca3af" 
+              }} 
+            />
+          </button>
         </div>
-        <span className="text-xs">Cantidad de SKU:</span>
-        <span className="text-base font-semibold">
+        <span className="text-sm-sumimas">Cantidad de SKU:</span>
+        <span className="text-base-sumimas font-semibold">
           {filtered.length}
         </span>
       </div>
@@ -103,7 +113,7 @@ function ProductList({
           <div className="text-center  border  rounded-xl p-4 shadow-sm">
            <AssignmentTurnedInIcon className="text-[#152c48] text-3xl" />
             <p className="font-semibold text-sm">
-               Todos los productos fueron empacados
+                Todos los productos fueron empacados
             </p>
             <p className="text-xs mt-1">
               No quedan productos pendientes

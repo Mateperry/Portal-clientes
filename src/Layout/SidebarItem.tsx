@@ -7,6 +7,7 @@ interface Props {
   icon: ReactNode;
   showLabel: boolean;
   onClick?: () => void;
+  isMobile?: boolean; // nuevo prop
 }
 
 export default function SidebarItem({
@@ -15,6 +16,7 @@ export default function SidebarItem({
   icon,
   showLabel,
   onClick,
+  isMobile = false,
 }: Props) {
   return (
     <div className="relative group">
@@ -33,15 +35,14 @@ export default function SidebarItem({
         `
         }
       >
-        {/* Icono */}
         <span className="text-[22px]">{icon}</span>
 
-        {/* Texto normal */}
+        {/* Texto permanente si showLabel true */}
         {showLabel && <span>{label}</span>}
       </NavLink>
 
-      {/* Tooltip al hacer hover cuando sidebar cerrado */}
-      {!showLabel && (
+      {/* Tooltip solo en desktop cuando sidebar cerrado */}
+      {!showLabel && !isMobile && (
         <span className="absolute left-full top-1/2 -translate-y-1/2 ml-2
                          bg-gray-900 text-white text-sm px-2 py-1 rounded
                          opacity-0 group-hover:opacity-100
