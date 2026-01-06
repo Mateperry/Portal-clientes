@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import StyleOutlinedIcon from "@mui/icons-material/StyleOutlined";
@@ -6,9 +7,15 @@ import { SECTIONS } from "../config/sections";
 import type { ReactNode } from "react";
 export default function Home() {
   const navigate = useNavigate();
+  const role = localStorage.getItem("role");
 
-  // Leer rol desde localStorage, default "admin"
-  const role = localStorage.getItem("role") || "admin";
+  useEffect(() => {
+    if (!role) {
+      navigate("/login", { replace: true });
+    }
+  }, [role, navigate]);
+
+  if (!role) return null;
 
   // Filtrar secciones permitidas
   const allowedSections = Object.entries(SECTIONS).filter(([_key, section]) =>
