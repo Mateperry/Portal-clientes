@@ -107,7 +107,7 @@ function PackingPage({
   );
 
   return (
-<div className="p-1 bg-white  max-w-full mx-auto max-h-[calc(100vh-1rem)] overflow-y-auto">
+<div className="p-1 bg-white  max-w-full mx-auto max-h-[calc(100vh-5rem)] overflow-y-auto">
 
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
         <div className="flex flex-col items-center mb-3 gap-3 w-full">

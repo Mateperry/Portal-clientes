@@ -9,11 +9,11 @@ interface HomeButtonsProps {
 
 function HomeButtons({ onCancel, onFinish, canFinish }: HomeButtonsProps) {
   return (
-    <div className="home-buttons w-full flex justify-center my-1">
-      <div className="flex flex-nowrap justify-center gap-2 sm:gap-4 md:gap-6">
+    <div className=" w-full flex justify-center my-1">
+      <div className="flex flex-nowrap justify-center gap-1 sm:gap- md:gap-1">
 
         <button
-          className="btn-cancelar flex items-center gap-1 sm:gap-2 rounded-full text-sm-sumimas" 
+          className="btn-cancelar flex items-center gap-1 sm:gap-1 rounded-full text-sm-sumimas " 
           onClick={onCancel}
         >
           <CloseIcon fontSize="small" />

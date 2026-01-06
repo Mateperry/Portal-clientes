@@ -1,11 +1,23 @@
+
 import { useEffect, useState, useRef } from "react";
 import SidebarItem from "./SidebarItem";
 import { useLayout } from "./LayoutContext";
-import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
-import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
-import StyleOutlinedIcon from "@mui/icons-material/StyleOutlined";
+import { logisticaSidebarItems } from "../Logistica/sidebar";
+import { comercialSidebarItems } from "../sections/comercial/sidebar";
+import { adminSidebarItems } from "../sections/admin/sidebar";
 
-export default function Sidebar() {
+type Section = "logistica" | "comercial" | "admin";
+interface SidebarProps {
+  section: Section | null;
+}
+
+const SIDEBAR_BY_SECTION: Record<Section, any[]> = {
+  logistica: logisticaSidebarItems,
+  comercial: comercialSidebarItems,
+  admin: adminSidebarItems,
+};
+
+export default function Sidebar({ section }: SidebarProps) {
   const { isSidebarOpen, toggleSidebar } = useLayout();
   const [isMobile, setIsMobile] = useState(false);
   const sidebarRef = useRef<HTMLElement>(null);
@@ -77,35 +89,19 @@ export default function Sidebar() {
         `}
       >
         <nav className="flex flex-col gap-1 p-2">
-          {/* INICIO */}
-          <SidebarItem
-            label="Inicio"
-            to="/"
-            icon={<MapsHomeWorkOutlinedIcon sx={{ fontSize: 30 }} />}
-            showLabel={isSidebarOpen}
-            onClick={handleItemClick}
-            isMobile={isMobile} // Pasamos prop para controlar el hover
-          />
-
-          {/* PACKING */}
-          <SidebarItem
-            label="Packing"
-            to="/packing"
-            icon={<Inventory2OutlinedIcon sx={{ fontSize: 28 }} />}
-            showLabel={isSidebarOpen}
-            onClick={handleItemClick}
-            isMobile={isMobile}
-          />
-
-          {/* ESTILOS */}
-          <SidebarItem
-            label="Estilos"
-            to="/estilos"
-            icon={<StyleOutlinedIcon sx={{ fontSize: 30 }} />}
-            showLabel={isSidebarOpen}
-            onClick={handleItemClick}
-            isMobile={isMobile}
-          />
+          {section && SIDEBAR_BY_SECTION[section]
+            ? SIDEBAR_BY_SECTION[section].map((item, idx) => (
+                <SidebarItem
+                  key={item.to || idx}
+                  label={item.label}
+                  to={item.to}
+                  icon={item.icon}
+                  showLabel={isSidebarOpen}
+                  onClick={handleItemClick}
+                  isMobile={isMobile}
+                />
+              ))
+            : null}
         </nav>
       </aside>
     </>

@@ -53,7 +53,7 @@ export default function LabelsPage({
           {/*  FINALIZADO */}
           <button
             onClick={() => {
-              console.log("📦 Cajas listas para finalizar:", readyBoxes);
+              console.log(" Cajas listas para finalizar:", readyBoxes);
               onFinish?.();
             }}
             className="flex items-center gap-2 px-5 py-2 rounded-full

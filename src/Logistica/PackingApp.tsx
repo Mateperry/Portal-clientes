@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import OrderListPage from "../Packing/pages/OrderListPage";
-import PackingPage from "../Packing/pages/PackingPage";
-import LabelsPage from "../Packing/pages/LabelsPage";
+import OrderListPage from "../Logistica/Packing/pages/OrderListPage";
+import PackingPage from "../Logistica/Packing/pages/PackingPage";
+import LabelsPage from "../Logistica/Packing/pages/LabelsPage";
 
-import type { Product } from "../Packing/interfaces/Product";
-import { useOrders } from "../Packing/Hooks/Orders/useOrders";
+import type { Product } from "../Logistica/Packing/interfaces/Product";
+import { useOrders } from "../Logistica/Packing/Hooks/Orders/useOrders";
 
 /* =========================
    TIPOS
