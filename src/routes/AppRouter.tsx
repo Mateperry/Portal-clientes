@@ -14,7 +14,14 @@ export default function AppRouter() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         {/* Redirección automática de /logistica a /logistica/packing */}
-        <Route path="/logistica/estilos" element={<Estilos />} />
+        <Route
+          path="/logistica/estilos"
+          element={
+            <RouteGuard allowedRoles={SECTIONS.logistica.roles}>
+              <Estilos />
+            </RouteGuard>
+          }
+        />
         <Route
           path="/logistica/*"
           element={

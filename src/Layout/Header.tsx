@@ -38,7 +38,7 @@ export default function Header({ showSidebar = false }: HeaderProps) {
 
   return (
     <header
-      className="h-15 flex items-center justify-between px-2"
+      className="h-15 flex items-center justify-between px-2 "
       style={{
         backgroundColor: "var(--sumimas-color-superficie)",
         borderBottom: "1px solid var(--sumimas-color-borde)",

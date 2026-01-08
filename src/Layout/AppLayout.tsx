@@ -14,9 +14,9 @@ function LayoutContent() {
   const showSidebar = Boolean(section);
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50">
+    <div className="flex flex-col h-screen bg-gray-50  ">
       {/* HEADER */}
-      <Header showSidebar={showSidebar} />
+      <Header showSidebar={showSidebar}  />
 
       {/* BODY */}
       <div className="flex flex-1 relative">

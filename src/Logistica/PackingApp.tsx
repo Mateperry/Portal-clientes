@@ -31,7 +31,7 @@ export default function PackingApp() {
   };
 
   /* ======================
-     1️⃣ ORDERS
+      ORDERS
   ====================== */
   if (view === "orders") {
     return (
@@ -58,7 +58,7 @@ export default function PackingApp() {
   }
 
   /* ======================
-     2️⃣ PACKING + LABELS
+      PACKING + LABELS
   ====================== */
   return (
     <>

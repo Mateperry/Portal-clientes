@@ -60,51 +60,32 @@ export function usePackingService(initialProducts?: Product[]) {
   /* =========================
      REPARTIR EN MÚLTIPLES CAJAS
   ========================= */
-  function assignToMultipleBoxes(
-    product: Product | number,
-    amountPerBox: number,
-    numberOfBoxes: number
-  ) {
-    if (!product || typeof product === "number") return;
+function assignToMultipleBoxes(
+  product: Product | number,
+  amountPerBox: number,
+  numberOfBoxes: number
+) {
+  if (!product || typeof product === "number") return;
 
-    const boxesNeeded = Math.floor(numberOfBoxes);
-    const amount = Math.floor(amountPerBox);
+  const boxesNeeded = Math.floor(numberOfBoxes);
+  const amount = Math.floor(amountPerBox);
 
-    if (boxesNeeded <= 0 || amount <= 0) return;
-    if (product.quantity < boxesNeeded * amount) return;
+  if (boxesNeeded <= 0 || amount <= 0) return;
+  if (product.quantity < boxesNeeded * amount) return;
 
-    // 1️⃣ Cajas vacías existentes
-    const emptyBoxIndexes = boxes
-      .map((b, i) => ({ i, productos: b.productos }))
-      .filter((b) => b.productos.length === 1)
-      .map((b) => b.i);
+  //  Crear SIEMPRE cajas nuevas
+  const startIndex = boxes.length;
+  createEmptyBoxes(boxesNeeded);
 
-    const boxesToUse: number[] = [];
-
-    // 2️⃣ Usar vacías primero
-    for (const idx of emptyBoxIndexes) {
-      if (boxesToUse.length < boxesNeeded) boxesToUse.push(idx);
-    }
-
-    // 3️⃣ Crear cajas faltantes
-    const missing = boxesNeeded - boxesToUse.length;
-    if (missing > 0) {
-      createEmptyBoxes(missing);
-      const newIndexes = Array.from(
-        { length: missing },
-        (_, i) => boxes.length + i
-      );
-      boxesToUse.push(...newIndexes);
-    }
-
-    // 4️⃣ Repartir productos
-    for (const boxIndex of boxesToUse) {
-      addToBox(boxIndex, product, amount);
-    }
-
-    // 5️⃣ Descontar inventario
-    decreaseQuantity(product.id, boxesNeeded * amount);
+  //  Repartir producto en las nuevas cajas
+  for (let i = 0; i < boxesNeeded; i++) {
+    addToBox(startIndex + i, product, amount);
   }
+
+  //  Descontar inventario
+  decreaseQuantity(product.id, boxesNeeded * amount);
+}
+
 
   /* =========================
      RESTAURAR PRODUCTOS A CAJAS
@@ -140,7 +121,7 @@ export function usePackingService(initialProducts?: Product[]) {
     );
 
     if (isProduct && product && boxId !== undefined) {
-      if (product.quantity > 5) {
+      if (product.quantity > 4) {
         openQuantityModal(product, boxId);
       } else {
         addToBox(boxId, product, 1);
@@ -181,9 +162,7 @@ export function usePackingService(initialProducts?: Product[]) {
     decrementOne(boxId, productId);
   };
 
-  /* =========================
-     API FINAL
-  ========================= */
+
   return {
     products,
     boxes,

@@ -7,7 +7,12 @@ interface RouteGuardProps {
 }
 
 export default function RouteGuard({ allowedRoles, children }: RouteGuardProps) {
-  const role = localStorage.getItem("role") || "admin";
+  const role = localStorage.getItem("role");
+  // Si no hay role, el usuario no está logueado
+  if (!role) {
+    return <Navigate to="/login" replace />;
+  }
+  // Si el role no está permitido, redirige al home
   if (!allowedRoles.includes(role)) {
     return <Navigate to="/" replace />;
   }
