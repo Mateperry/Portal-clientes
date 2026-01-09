@@ -226,7 +226,7 @@ export default function Login() {
                   <Typography
                     variant="caption"
                     sx={{ color: "var(--sumimas-texto-secundario)" }}
-                    display={{ xs: "none", sm: "block" }}
+                    display={{ xs: "block", sm: "block" }}
                   >
                     Sumimas S.A.S. – Todos los derechos reservados
                   </Typography>

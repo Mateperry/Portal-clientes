@@ -1,7 +1,7 @@
 import MapsHomeWorkOutlinedIcon from "@mui/icons-material/MapsHomeWorkOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import HomeWorkOutlinedIcon from "@mui/icons-material/HomeWorkOutlined";
-export const adminSidebarItems = [
+export const comercialSidebarItems = [
       {
     label: "Inicio  ",
     to: "/",

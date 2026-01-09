@@ -17,7 +17,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import CheckIcon from "@mui/icons-material/Check";
 
 // Componentes internos
-import DroppableBox from "../Box/DroppableBox";
+import DroppableBox from "./DroppableBox";
 import BoxContend from "./BoxContend";
 
 import type { Product } from "../../interfaces/Product";

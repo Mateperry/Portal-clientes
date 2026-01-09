@@ -6,9 +6,9 @@ import { useState } from "react";
 import type { Product } from "../../interfaces/Product";
 
 // Componentes internos
-import SearchBar from "../Products/SearchBar";
-import DraggableProduct from "../Products/DraggableProduct";
-import PaginationButtons from "../Products/PaginationButtons";
+import SearchBar from "./SearchBar";
+import DraggableProduct from "./DraggableProduct";
+import PaginationButtons from "./PaginationButtons";
 import AssignItemsModal from "../UI/AssignItemsModal";
 
 // Hooks personalizados

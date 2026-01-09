@@ -24,9 +24,10 @@ export default function Home() {
 
   // Iconos por sección
 const sectionIcons: Record<string, ReactNode> = {
+  admin: <DashboardIcon fontSize="large"  className="texto-primario-sumimas"/>,
   logistica: <Inventory2OutlinedIcon fontSize="large" />,
   comercial: <StyleOutlinedIcon fontSize="large" />,
-  admin: <DashboardIcon fontSize="large" />,
+  
 };
 
   return (

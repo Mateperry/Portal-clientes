@@ -2,9 +2,9 @@
 import { useEffect, useState, useRef } from "react";
 import SidebarItem from "./SidebarItem";
 import { useLayout } from "./LayoutContext";
-import { logisticaSidebarItems } from "../Logistica/sidebar";
-import { comercialSidebarItems } from "../sections/comercial/sidebar";
-import { adminSidebarItems } from "../sections/admin/sidebar";
+import { logisticaSidebarItems } from "../Modulos/Logistica/sidebar";
+import { comercialSidebarItems } from "../Modulos/Comercial/sidebar";
+import { adminSidebarItems } from "../Modulos/Admin/sidebar";
 
 type Section = "logistica" | "comercial" | "admin";
 interface SidebarProps {

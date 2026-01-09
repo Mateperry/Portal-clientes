@@ -1,4 +1,10 @@
 export const SECTIONS = {
+    admin: {
+    label: "Administración",
+    path: "/admin/dashboard",
+    roles: ["admin"],
+    description: "Configuración del sistema y gestión de usuarios",
+  },
   logistica: {
     label: "Logística",
     path: "/logistica/packing",
@@ -11,10 +17,5 @@ export const SECTIONS = {
     roles: ["admin", "comercial"],
     description: "Gestión de clientes, ventas y facturación",
   },
-  admin: {
-    label: "Administración",
-    path: "/admin/dashboard",
-    roles: ["admin"],
-    description: "Configuración del sistema y gestión de usuarios",
-  },
+
 };

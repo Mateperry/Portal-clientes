@@ -1,35 +1,42 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import AppLayout from "../Layout/AppLayout";
 import Home from "../Page/Home";
-import PackingApp from "../Logistica/PackingApp";
-import Estilos from "../Page/Estilos";
 import Login from "../Log/Login";
 import RouteGuard from "./RouteGuard";
 import { SECTIONS } from "../config/sections";
+
+import AdminApp from "../Modulos/Admin/AdminApp";
+import LogisticaApp from "../Modulos/Logistica/LogisticaApp";
 
 export default function AppRouter() {
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
+
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
-        {/* Redirección automática de /logistica a /logistica/packing */}
-        <Route
-          path="/logistica/estilos"
-          element={
-            <RouteGuard allowedRoles={SECTIONS.logistica.roles}>
-              <Estilos />
-            </RouteGuard>
-          }
-        />
+
+        {/* LOGÍSTICA */}
         <Route
           path="/logistica/*"
           element={
             <RouteGuard allowedRoles={SECTIONS.logistica.roles}>
-              <PackingApp />
+              <LogisticaApp />
             </RouteGuard>
           }
         />
+
+        {/* ADMIN */}
+        <Route
+          path="/admin/*"
+          element={
+            <RouteGuard allowedRoles={SECTIONS.admin.roles}>
+              <AdminApp />
+            </RouteGuard>
+          }
+        />
+
+        {/* COMERCIAL */}
         <Route
           path="/comercial/*"
           element={
@@ -38,14 +45,7 @@ export default function AppRouter() {
             </RouteGuard>
           }
         />
-        <Route
-          path="/admin/*"
-          element={
-            <RouteGuard allowedRoles={SECTIONS.admin.roles}>
-              <div>Admin</div>
-            </RouteGuard>
-          }
-        />
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>

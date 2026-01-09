@@ -28,7 +28,7 @@
   --sumimas-color-borde: #e5e7eb;
 
   /* === TEXTO === */
-  --sumimas-texto-primario: #142c4c;
+  --sumimas-texto-primario: var(--sumimas-color-azul-oscuro)
   --sumimas-texto-secundario: #706561;
   --sumimas-texto-invertido: #ffffff;
 

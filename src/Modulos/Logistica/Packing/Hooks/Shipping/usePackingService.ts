@@ -1,5 +1,5 @@
 import type { Product } from "../../interfaces/Product";
-import { useProducts } from "../../Hooks/Products/useProducts";
+import { useProducts } from "../Products/useProducts";
 import { usePackingManager } from "./usePackingManager";
 import { useQuantityModal } from "../UI/useQuantityModal";
 

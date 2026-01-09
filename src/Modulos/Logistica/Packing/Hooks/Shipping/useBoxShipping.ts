@@ -1,8 +1,13 @@
 import { useRef, useState } from "react";
 import type { Product } from "../../interfaces/Product";
 
+/* =========================
+   TIPOS
+========================= */
+
 export interface ReadyBox {
-  id: number;
+  id: number;            // ID interno (React / estado)
+  boxCode: string;       // orden-123-caja1
   titulo: string;
   productos: Product[];
   readyAt: Date;
@@ -14,29 +19,51 @@ export interface ShippedBox extends ReadyBox {
   status: "shipped";
 }
 
-export function useBoxShipping() {
+/* =========================
+   HOOK
+========================= */
+
+export function useBoxShipping(orderId: string | number) {
   const [readyBoxes, setReadyBoxes] = useState<ReadyBox[]>([]);
   const [shippedBoxes, setShippedBoxes] = useState<ShippedBox[]>([]);
 
-  const nextIdRef = useRef(1);
+  // Contadores
+  const nextInternalIdRef = useRef(1); // id interno
+  const nextBoxNumberRef = useRef(1);  // caja1, caja2...
 
-  const markBoxReady = (box: Omit<ReadyBox, "id" | "readyAt">) => {
+  /* =========================
+     MARCAR CAJA COMO LISTA
+  ========================= */
+  const markBoxReady = (
+    box: Omit<ReadyBox, "id" | "readyAt" | "boxCode">
+  ) => {
+    if (orderId === undefined || orderId === null) {
+      console.error("useBoxShipping: orderId es requerido");
+      return;
+    }
+
     const productosCopy = box.productos.map((p) => ({ ...p }));
 
-    const id = nextIdRef.current;
-    nextIdRef.current += 1;
+    const internalId = nextInternalIdRef.current++;
+    const boxNumber = nextBoxNumberRef.current++;
+
+    const boxCode = `${orderId}-caja${boxNumber}`;
 
     setReadyBoxes((prev) => [
       ...prev,
       {
         ...box,
-        id,
+        id: internalId,
+        boxCode,
         productos: productosCopy,
         readyAt: new Date(),
       },
     ]);
   };
 
+  /* =========================
+     ENVIAR UNA SOLA CAJA
+  ========================= */
   const shipSingleBox = () => {
     setReadyBoxes((prev) => {
       if (prev.length === 0) return prev;
@@ -56,6 +83,9 @@ export function useBoxShipping() {
     });
   };
 
+  /* =========================
+     ENVIAR TODAS LAS CAJAS
+  ========================= */
   const shipAllBoxes = () => {
     setShippedBoxes((prev) => [
       ...prev,
@@ -69,14 +99,24 @@ export function useBoxShipping() {
     setReadyBoxes([]);
   };
 
+  /* =========================
+     DESMARCAR CAJA
+  ========================= */
   const unmarkBoxReady = (readyBoxId: number) => {
     setReadyBoxes((prev) => prev.filter((b) => b.id !== readyBoxId));
   };
 
+  /* =========================
+     LIMPIAR CAJAS
+  ========================= */
   const clearReadyBoxes = () => {
     setReadyBoxes([]);
+    nextBoxNumberRef.current = 1; // reinicia numeración por orden
   };
 
+  /* =========================
+     API
+  ========================= */
   return {
     readyBoxes,
     shippedBoxes,
